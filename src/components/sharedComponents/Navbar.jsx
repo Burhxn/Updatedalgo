@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/Navbar.scss";
 import { Link } from "react-router-dom";
-import { CiDatabase } from "react-icons/ci";
-import { IoIosLogIn } from "react-icons/io";
 import logo from "../../assets/web Title with logo.svg";
 import axios from "axios";
 import { FaUserTie } from "react-icons/fa6";
@@ -31,14 +29,16 @@ const Navbar = (props) => {
       const res = await axios.get(`${baseUrl}/user/getUser/${token}`);
 
       setUser(res.data.email);
+      console.log(res)
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
+    console.log(":heeelo")
     getUserData();
-  }, [props.change]);
+  }, []);
 
   return (
     <>

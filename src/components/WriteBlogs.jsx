@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "../styles/WriteBlogs.scss";
 import axios from "axios";
@@ -30,8 +31,8 @@ const WriteBlogs = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      // const baseUrl = "http://localhost:4000";
-      const baseUrl = "https://algoacademy.onrender.com";
+      const baseUrl = "http://localhost:4000";
+      // const baseUrl = "https://algoacademy.onrender.com";
       const token = localStorage.getItem("token");
       const url = `${baseUrl}/post/createPost/${token}`;
       const res = await axios.post(url, formData);

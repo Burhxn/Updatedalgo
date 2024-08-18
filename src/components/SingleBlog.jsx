@@ -21,7 +21,7 @@ const SingleBlog = () => {
   const fetchSingleBlog = async () => {
     try {
        const baseUrl = "http://localhost:4000";
-    //   const baseUrl = "https://algoacademy.onrender.com";
+      // const baseUrl = "https://algoacademy.onrender.com";
       const res = await axios.get(`${baseUrl}/post/get/${_id}`);
 
       setData(res.data.post);
@@ -50,7 +50,7 @@ const SingleBlog = () => {
 
       <div className="title">
         <h1>{data.title}</h1>
-        <p>{data.author}</p>
+        <p><b>Author :</b> <i>{data.author}</i></p>
       </div>
 
       <div

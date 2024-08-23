@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/login.scss";
-import axios from "axios";
+import api from "../utils/AxiosInstance";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -11,22 +11,22 @@ const Login = (props) => {
   const [loading , setLoading ] =useState(false)
 
   const formData = { email, password };
- const baseUrl = "http://localhost:4000";
-//  const baseUrl = "http://localhost:3000";
-// 
+
+
+
+
   const LoginHandler = async () => {
     try {
       setLoading(true)
-      const res = await axios.post(`${baseUrl}/user/login`, formData);
+    
+      const res = await api.post("/user/login" , formData)
 
       if (res.data.message === "user loggin success") {
         toast.success("User Logged In succesfully!");
-        const { token } = res.data;
-        localStorage.setItem("token", token);
-
         props.setChange(!props.change)
-        
         navigate("/secureIndex");
+
+        console.log(res)
       } else {
         toast.error(res.data.message);
       }
